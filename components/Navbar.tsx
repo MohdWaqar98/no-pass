@@ -23,8 +23,8 @@ export default function Navbar() {
 
   const privateLinks = [
     { name: "Overview", href: "/dashboard" },
-    { name: "Passwords", href: "/passwords" },
-    { name: "Credit Card", href: "/cards" },
+    { name: "Passwords", href: "/dashboard/passwords" },
+    { name: "Credit Card", href: "/dashboard/cards" },
   ]
 
   useEffect(() => {
