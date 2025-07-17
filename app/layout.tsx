@@ -21,8 +21,23 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "NoPass – Secure Password Manager",
-  description: "Securely manage your passwords and credit cards with NoPass. Military-grade encryption, autofill, and more.",
+  title: "NoPass | Password & Card Manager",
+  description: "NoPass is your secure command center for managing passwords and credit cards. Enjoy military-grade encryption, autofill, cross-device sync, and more.",
+  icons: {
+    icon: "/icons8-key-96.png",
+    shortcut: "/icons8-key-96.png",
+    apple: "/icons8-key-96.png",
+    other: [
+      { rel: "icon", url: "/icons8-key-96.png" },
+      { rel: "apple-touch-icon", url: "/icons8-key-96.png" }
+    ]
+  },
+  manifest: "/manifest.json",
+  generator: "Next.js",
+  applicationName: "NoPass",
+  keywords: ["password manager", "credit card locker", "secure", "encryption", "NoPass"],
+  authors: [{ name: "NoPass Team" }],
+  themeColor: "#18181b"
 }
 
 export default function RootLayout({
