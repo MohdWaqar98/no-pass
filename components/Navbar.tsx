@@ -15,10 +15,16 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false)
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const navLinks = [
+  const publicLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
+  ]
+
+  const privateLinks = [
+    { name: "Overview", href: "/dashboard" },
+    { name: "Passwords", href: "/passwords" },
+    { name: "Credit Card", href: "/cards" },
   ]
 
   useEffect(() => {
@@ -33,7 +39,7 @@ export default function Navbar() {
         </Link>
         <SignedOut>
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
+            {publicLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -94,20 +100,20 @@ export default function Navbar() {
       </div>
       {isMobileMenuOpen && (
         <div className="md:hidden px-6 pb-4 space-y-2 bg-background/95 border-t border-border">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "block text-sm font-medium transition-colors hover:text-primary",
-                pathname === link.href ? "text-primary" : "text-foreground/70"
-              )}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
           <SignedOut>
+            {publicLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "block text-sm font-medium transition-colors hover:text-primary",
+                  pathname === link.href ? "text-primary" : "text-foreground/70"
+                )}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
             <div className="flex flex-col gap-2 mt-2">
               <SignInButton>
                 <Button
@@ -124,6 +130,21 @@ export default function Navbar() {
               </SignUpButton>
             </div>
           </SignedOut>
+          <SignedIn>
+            {privateLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "block text-sm font-medium transition-colors hover:text-primary",
+                  pathname === link.href ? "text-primary" : "text-foreground/70"
+                )}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </SignedIn>
         </div>
       )}
     </nav>
